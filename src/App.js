@@ -45,7 +45,7 @@ class App extends Component {
 	}
 
 	render() {
-		const {searchViewVisible, airports, airportsPending} = this.state;
+		const {searchViewVisible, airports, airportsPending, flights} = this.state;
 		return (
 			<div className="App">
 				<header className="App-header">
@@ -53,7 +53,7 @@ class App extends Component {
 				</header>
 				{searchViewVisible && <SearchView onSearchClick={this.onSearchClick} airports={airports}
 					pending={airportsPending}/>}
-				{!searchViewVisible && <FlightsView onBackClick={this.onBackClick}/>}
+				{!searchViewVisible && <FlightsView flights={flights} onBackClick={this.onBackClick}/>}
 			</div>
 		);
 	}

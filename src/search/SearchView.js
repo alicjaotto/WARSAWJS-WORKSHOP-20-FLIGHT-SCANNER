@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import CircularProgress from 'material-ui/CircularProgress';
-import {SearchButton} from "../shared/components/SearchButton";
-import {AirportModel} from "../shared/models/AirportModel";
-import {SelectAirport} from "../shared/components/SelectAirport";
-import {AirportService} from "../shared/services/AirportService";
+import {SearchButton} from '../shared/components/SearchButton';
+import {AirportModel} from '../shared/models/AirportModel';
+import {SelectAirport} from '../shared/components/SelectAirport';
+import {AirportService} from '../shared/services/AirportService';
 
 export class SearchView extends Component {
 
