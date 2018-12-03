@@ -1,17 +1,20 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import CircularProgress from 'material-ui/CircularProgress';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import {SearchButton} from '../shared/components/SearchButton';
 import {AirportModel} from '../shared/models/AirportModel';
 import {SelectAirport} from '../shared/components/SelectAirport';
 import {AirportService} from '../shared/services/AirportService';
+import {SelectDate} from '../shared/components/SelectDate';
 
 export class SearchView extends Component {
 
 	state = {
 		airportFrom: null,
 		airportTo: null,
-		flightsSearchPending: false
+		flightsSearchPending: false,
+		departureDate: null,
+		returnDate: null
 	};
 
 	_selectAirport = (key, airport) => {
@@ -32,6 +35,18 @@ export class SearchView extends Component {
 		});
 	};
 
+	onSelectDepartureDate = (date) => {
+		this.setState({
+			departureDate: '01-01-2018'
+		});
+	}
+
+	onSelectReturnDate = (date) => {
+		this.setState({
+			returnDate: '02-02-2018'
+		});
+	}
+
 
 	render() {
 		const {airports, pending} = this.props;
@@ -42,14 +57,17 @@ export class SearchView extends Component {
 				{!pending &&
 				(<div>
 					<SelectAirport
-						label={'FROM'}
+						label='FROM'
 						onChange={(airport) => this._selectAirport('airportFrom', airport)}
 						airports={airports}/>
 					<SelectAirport
-						label={'TO'}
+						label='TO'
 						onChange={(airport) => this._selectAirport('airportTo', airport)}
 						airports={airports}/>
-				</div>)}
+					<SelectDate label='Departure' id='departure-date' onChange={this.onSelectDepartureDate}/>
+					<SelectDate label='Return' id='return-date' onChange={this.onSelectReturnDate}/>
+				</div>
+				)}
 
 				{(pending || flightsSearchPending) && <CircularProgress/> }
 

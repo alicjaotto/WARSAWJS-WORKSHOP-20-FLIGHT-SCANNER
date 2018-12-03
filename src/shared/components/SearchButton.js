@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import RaisedButton from 'material-ui/RaisedButton';
+import Button from '@material-ui/core/Button';
 
 export class SearchButton extends Component {
 	render() {
 		const {text, onClick} = this.props;
 		return (
-			<RaisedButton primary onClick={onClick} label={text}/>
+			<Button variant="contained" color="primary" onClick={onClick}>{text}</Button>
 		)
 	}
 }

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {Flight} from '../flights/Flight';
-import FlatButton from 'material-ui/FlatButton';
+import Button from '@material-ui/core/Button';
 import {FlightModel} from '../shared/models/FlightModel';
 
 export class FlightsView extends Component {
@@ -18,10 +18,10 @@ export class FlightsView extends Component {
 	render() {
 		const {flights} = this.state;
 		var flights_result = flights.map((flight, index) => {
-			const {id, price} = flight
-			const {number} = index
+			const {id, price} = flight;
+
 			return(
-				<Flight price={price} id={id} index={number}></Flight>
+				<Flight key={id} price={price} id={id} index={index+1}></Flight>
 			)
 		})
 		return (
@@ -29,7 +29,7 @@ export class FlightsView extends Component {
 				<ul>
 					{flights_result}
 				</ul>
-				<FlatButton primary onClick={this.onBackClick} label='Go back'/>
+				<Button color="primary" onClick={this.onBackClick}>Go back</Button>
 			</div>
 		)
 	}

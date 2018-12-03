@@ -5,8 +5,8 @@ export class Flight extends Component {
 	render() {
 		const {price, id, index} = this.props;
 		return (
-			<li key={id} value={id}>
-				<span> choice nr {index}</span>
+			<li value={id}>
+				<span>{index}</span>
 				<span>Price: ${price}</span>
 			</li>
 		)
@@ -15,6 +15,6 @@ export class Flight extends Component {
 
 Flight.propTypes = {
 	price: PropTypes.number,
-	index: PropTypes.string,
+	index: PropTypes.number,
 	id: PropTypes.number
 };
