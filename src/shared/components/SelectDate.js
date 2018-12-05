@@ -4,30 +4,22 @@ import TextField from '@material-ui/core/TextField';
 
 export class SelectDate extends Component {
 
-	state = {
-		selectedDate: ''
-	}
-
 	render() {
 		const {onChange, label, id} = this.props;
-		const {selectedDate} = this.state;
 
 		return (
-			<div>
+			<div className="App-body__search-view__select-date">
 				<TextField
 					id={id}
 					label={label}
-					value={selectedDate}
 					onChange={(event) => {
-						this.setState({
-							selectedDate: event.target.value
-						});
-						console.log(this.state);
+						onChange(event.target.value);
 					}}
 					type="date"
 					InputLabelProps={{
 						shrink: true,
 					}}
+					format={'DD/MM/YYYY'}
 				/>
 			</div>
 		);
@@ -38,5 +30,5 @@ export class SelectDate extends Component {
 SelectDate.propTypes = {
 	label: PropTypes.string.isRequired,
 	id: PropTypes.string.isRequired,
-	onChange: PropTypes.func
+	onChange: PropTypes.func.isRequired
 }

@@ -21,7 +21,6 @@ class App extends Component {
 
 	componentDidMount() {
 		AirportService.getAirportResources().then(airports => {
-			console.log(airports);
 			this.setState({
 				airportsPending: false,
 				airports
@@ -38,10 +37,9 @@ class App extends Component {
 	}
 
 	onBackClick() {
-		this.setState({searchViewVisible: true}, () => {
-			console.log(this.state);
+		this.setState({
+			searchViewVisible: true
 		});
-		console.log(this.state);
 	}
 
 	render() {
@@ -49,11 +47,16 @@ class App extends Component {
 		return (
 			<div className="App">
 				<header className="App-header">
-					<h1 className="App-title">Welcome to flight-search</h1>
+					<h1 className="App-title">Welcome to flight search</h1>
+					<div className="App-logo"></div>
 				</header>
-				{searchViewVisible && <SearchView onSearchClick={this.onSearchClick} airports={airports}
-					pending={airportsPending}/>}
-				{!searchViewVisible && <FlightsView flights={flights} onBackClick={this.onBackClick}/>}
+				<div className="App-body">
+					{searchViewVisible && <SearchView onSearchClick={this.onSearchClick} airports={airports} pending={airportsPending}/>}
+					{!searchViewVisible && <FlightsView flights={flights} onBackClick={this.onBackClick}/>}
+				</div>
+				<footer className="App-footer">
+					App created with ReactJS & material-ui for WarsawJS workshop
+				</footer>
 			</div>
 		);
 	}

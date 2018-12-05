@@ -1,28 +1,101 @@
+* {
+	list-style-type: none;
+	box-sizing: border-box;
+	margin: 0;
+	padding: none;
+	font-size: 10px;
+	font-family: Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+	font-weight: normal;
+}
+
 .App {
-  text-align: center;
+	text-align: center;
 }
 
 .App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+	animation: App-logo-spin infinite 20s linear;
+	height: 6em;
+	width: 6em;
+	background-image: url('logo.svg');
+	background-repeat: no-repeat;
+	background-position: center;
+	display: inline-block;
 }
 
 .App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+	background: rgb(255,255,255);
+	background: -moz-linear-gradient(45deg, rgba(255,255,255,1) 0%, rgba(0,0,0,1) 0%, rgba(98,98,98,1) 100%);
+	background: -webkit-linear-gradient(45deg, rgba(255,255,255,1) 0%, rgba(0,0,0,1) 0%, rgba(98,98,98,1) 100%);
+	background: linear-gradient(45deg, rgba(255,255,255,1) 0%, rgba(0,0,0,1) 0%, rgba(98,98,98,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#626262",GradientType=1);
+	background-size: 200% 100%;
+	-webkit-animation: gradient-animation 60s ease infinite;
+	-moz-animation: gradient-animation 60s ease infinite;
+	animation: gradient-animation 60s ease infinite;
+	height: auto;
+	padding: 2.2em;
+	color: white;
+	text-align: left;
+	font-weight: normal;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
 }
 
 .App-title {
-  font-size: 1.5em;
+	font-size: 2.5em;
+	display: inline-block;
 }
 
 .App-intro {
   font-size: large;
 }
+.App-body {
+	min-height: 60vh;
+}
 
+.App-body__search-view {
+	margin: 3rem 0;
+	width: 100%;
+	padding: 0 3.5em;
+	display: flex;
+	justify-content: space-between;
+	font-size: 1.8em;
+}
+
+.App-body__search-view__select-airport {
+	width: 25%;
+}
+
+.App-body__search-view__select-date {
+	width: 18%;
+}
+
+.App-body__search-view__select-passengers {
+	width: 12%;
+}
+
+.App-footer {
+	height: auto;
+}
+/*keyframes*/
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+	from { transform: rotate(0deg); }
+	to { transform: rotate(360deg); }
+}
+
+@-webkit-keyframes gradient-animation {
+	0%{background-position:0% 50%}
+	50%{background-position:100% 50%}
+	100%{background-position:0% 50%}
+}
+@-moz-keyframes gradient-animation {
+	0%{background-position:0% 50%}
+	50%{background-position:100% 50%}
+	100%{background-position:0% 50%}
+}
+@keyframes gradient-animation {
+	0%{background-position:0% 50%}
+	50%{background-position:100% 50%}
+	100%{background-position:0% 50%}
 }

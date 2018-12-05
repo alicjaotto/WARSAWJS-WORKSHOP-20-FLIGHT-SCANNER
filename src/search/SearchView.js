@@ -1,11 +1,13 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import TextField from '@material-ui/core/TextField';
 import {SearchButton} from '../shared/components/SearchButton';
 import {AirportModel} from '../shared/models/AirportModel';
 import {SelectAirport} from '../shared/components/SelectAirport';
 import {AirportService} from '../shared/services/AirportService';
 import {SelectDate} from '../shared/components/SelectDate';
+
 
 export class SearchView extends Component {
 
@@ -14,20 +16,33 @@ export class SearchView extends Component {
 		airportTo: null,
 		flightsSearchPending: false,
 		departureDate: null,
-		returnDate: null
+		returnDate: null,
+		passengers: 1
 	};
 
 	_selectAirport = (key, airport) => {
 		this.setState({
 			[key]: airport
-		}, () => {console.log(this.state)});
+		});
 	};
+
+	_selectDate = (key, date) => {
+		this.setState({
+			[key]: date
+		});
+	};
+
+	_selectPassengers = (number) => {
+		this.setState({
+			passengers: number
+		});
+	}
 
 	onSearchPress = () => {
 		this.setState({
 			flightsSearchPending: true
 		}, () => {
-			AirportService.fetchFlights(this.state.airportFrom, this.state.airportTo).then(flights => {
+			AirportService.fetchFlights(this.state.airportFrom, this.state.airportTo, this.state.departureDate, this.state.returnDate).then(flights => {
 				this.setState({
 					flightsSearchPending: false
 				}, () => this.props.onSearchClick(flights))
@@ -35,27 +50,14 @@ export class SearchView extends Component {
 		});
 	};
 
-	onSelectDepartureDate = (date) => {
-		this.setState({
-			departureDate: '01-01-2018'
-		});
-	}
-
-	onSelectReturnDate = (date) => {
-		this.setState({
-			returnDate: '02-02-2018'
-		});
-	}
-
-
 	render() {
 		const {airports, pending} = this.props;
- 		const {airportFrom, airportTo, flightsSearchPending} = this.state;
-		const FieldSelected = !Boolean(airportFrom && airportTo);
+ 		const {airportFrom, airportTo, departureDate, returnDate, passengers, flightsSearchPending} = this.state;
+		const SearchButtonActive = !Boolean(airportFrom && airportTo && departureDate && returnDate);
 		return (
 			<div>
 				{!pending &&
-				(<div>
+				(<div className="App-body__search-view">
 					<SelectAirport
 						label='FROM'
 						onChange={(airport) => this._selectAirport('airportFrom', airport)}
@@ -64,14 +66,34 @@ export class SearchView extends Component {
 						label='TO'
 						onChange={(airport) => this._selectAirport('airportTo', airport)}
 						airports={airports}/>
-					<SelectDate label='Departure' id='departure-date' onChange={this.onSelectDepartureDate}/>
-					<SelectDate label='Return' id='return-date' onChange={this.onSelectReturnDate}/>
+					<SelectDate label='Departure'
+						id='departure-date'
+						onChange={(date) => this._selectDate('departureDate', date)}/>
+					<SelectDate label='Return'
+						id='return-date'
+						onChange={(date) => this._selectDate('returnDate', date)}/>
+					<div className="App-body__search-view__select-passengers">
+						<TextField
+							id="passengers"
+							label="Number od passengers"
+							value={passengers}
+							onChange={(event) => this._selectPassengers(event.target.value)}
+							type="number"
+							InputLabelProps={{
+								shrink: true,
+							}}
+							inputProps={{
+								min: 1,
+							}}
+							margin="none"
+						/>
+					</div>
 				</div>
 				)}
 
 				{(pending || flightsSearchPending) && <CircularProgress/> }
 
-				{!flightsSearchPending && <SearchButton text={`Search flights`} onClick={this.onSearchPress} disabled={FieldSelected}/>}
+				{!flightsSearchPending && <SearchButton text={`Search flights`} onClick={this.onSearchPress} disabled={SearchButtonActive}/>}
 			</div>
 		)
 	}

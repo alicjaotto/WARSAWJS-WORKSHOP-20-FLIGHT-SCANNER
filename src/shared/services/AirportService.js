@@ -13,8 +13,8 @@ export class AirportService {
 		});
 	}
 
-	static fetchFlights(fromAirport, toAirport) {
-		return axios.get(`${this.API_URL}/flights/01-01-2018/31-01-2018/${fromAirport.id}/${toAirport.id}`)
+	static fetchFlights(fromAirport, toAirport, departureDate, returnDate) {
+		return axios.get(`${this.API_URL}/flights/${departureDate}/${returnDate}/${fromAirport.id}/${toAirport.id}`)
 		.then(response => {
 			return response.data.map(item => FlightModel.fromBackendData(item));
 		});

@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {AirportModel} from '../models/AirportModel';
-import InputLabel from '@material-ui/core/InputLabel';
-import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
+import TextField from '@material-ui/core/TextField';
 
 export class SelectAirport extends Component {
 
@@ -19,24 +18,25 @@ export class SelectAirport extends Component {
 		const {onChange, airports, label} = this.props;
 		const {selectedAirport} = this.state;
 		return(
-			<div>
-			<InputLabel htmlFor={label}>{label}</InputLabel>
-			<Select
-				value={selectedAirport}
-				onChange={(event) => {
-					const airportIndex = this.extractSelectedValue(event);
-					this.setState({
-						selectedAirport: airportIndex
-					});
-					onChange(airports[airportIndex]);
-				}}
-				inputProps={{
-					name: 'airport',
-					id: 'select-airport',
-				}}
-			>
-			{airports.map((airport, index) => <MenuItem key={airport.id} value={airport.id}>{airport.city}</MenuItem>)}
-			</Select>
+			<div className="App-body__search-view__select-airport">
+				<TextField
+					id="select-airport"
+					select
+					label={label}
+					value={selectedAirport}
+					onChange={(event) => {
+						const airportIndex = this.extractSelectedValue(event);
+						this.setState({
+							selectedAirport: airportIndex
+						});
+						onChange(airports[airportIndex]);
+					}}
+					InputLabelProps={{
+						shrink: true,
+					}}
+					margin="none">
+					{airports.map((airport, index) => <MenuItem key={airport.id} value={airport.id}>{airport.city}</MenuItem>)}
+				</TextField>
 			</div>
 		)}
 	}
