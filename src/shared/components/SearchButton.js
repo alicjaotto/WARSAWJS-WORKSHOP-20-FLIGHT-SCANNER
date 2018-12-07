@@ -5,6 +5,7 @@ import Button from '@material-ui/core/Button';
 export class SearchButton extends Component {
 	render() {
 		const {text, disabled, onClick} = this.props;
+
 		return (
 			<Button variant="contained"
 				color="primary"

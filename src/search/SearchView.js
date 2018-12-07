@@ -54,10 +54,11 @@ export class SearchView extends Component {
 		const {airports, pending} = this.props;
  		const {airportFrom, airportTo, departureDate, returnDate, passengers, flightsSearchPending} = this.state;
 		const SearchButtonActive = !Boolean(airportFrom && airportTo && departureDate && returnDate);
+
 		return (
-			<div>
+			<div className="App-body__search-view">
 				{!pending &&
-				(<div className="App-body__search-view">
+				(<div className="App-body__search-view__wrapper">
 					<SelectAirport
 						label='FROM'
 						onChange={(airport) => this._selectAirport('airportFrom', airport)}
@@ -75,7 +76,7 @@ export class SearchView extends Component {
 					<div className="App-body__search-view__select-passengers">
 						<TextField
 							id="passengers"
-							label="Number od passengers"
+							label="Passengers"
 							value={passengers}
 							onChange={(event) => this._selectPassengers(event.target.value)}
 							type="number"
@@ -86,6 +87,7 @@ export class SearchView extends Component {
 								min: 1,
 							}}
 							margin="none"
+							color="secondary"
 						/>
 					</div>
 				</div>

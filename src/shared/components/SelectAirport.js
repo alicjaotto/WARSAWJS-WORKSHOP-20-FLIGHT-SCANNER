@@ -17,10 +17,12 @@ export class SelectAirport extends Component {
 	render() {
 		const {onChange, airports, label} = this.props;
 		const {selectedAirport} = this.state;
+
 		return(
 			<div className="App-body__search-view__select-airport">
 				<TextField
 					id="select-airport"
+					placeholder="select airport"
 					select
 					label={label}
 					value={selectedAirport}

@@ -4,24 +4,21 @@
 	margin: 0;
 	padding: none;
 	font-size: 10px;
-	font-family: Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 	font-weight: normal;
+	text-decoration: none;
+}
+
+a {
+	color: inherit;
+	font-weight: bold;
 }
 
 .App {
 	text-align: center;
+	background-color: #F5F5F5;
 }
 
-.App-logo {
-	animation: App-logo-spin infinite 20s linear;
-	height: 6em;
-	width: 6em;
-	background-image: url('logo.svg');
-	background-repeat: no-repeat;
-	background-position: center;
-	display: inline-block;
-}
-
+/*header*/
 .App-header {
 	background: rgb(255,255,255);
 	background: -moz-linear-gradient(45deg, rgba(255,255,255,1) 0%, rgba(0,0,0,1) 0%, rgba(98,98,98,1) 100%);
@@ -32,9 +29,16 @@
 	-webkit-animation: gradient-animation 60s ease infinite;
 	-moz-animation: gradient-animation 60s ease infinite;
 	animation: gradient-animation 60s ease infinite;
-	height: auto;
+	height: 15vh;
+	min-height: 9.5em;
 	padding: 2.2em;
-	color: white;
+	margin-bottom: 2em;
+	color: #fff;
+}
+
+.App-header__content {
+	width: 80em;
+	margin: 0 auto;
 	text-align: left;
 	font-weight: normal;
 	display: flex;
@@ -42,41 +46,80 @@
 	justify-content: flex-start;
 }
 
-.App-title {
+.App-header__content__title {
 	font-size: 2.5em;
 	display: inline-block;
 }
 
-.App-intro {
-  font-size: large;
+.App-header__content__logo {
+	animation: App-logo-spin infinite 20s linear;
+	height: 6em;
+	width: 6em;
+	background-image: url('../plane.svg');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+	display: inline-block;
+	margin-left: 2em;
 }
+
+/*body*/
 .App-body {
-	min-height: 60vh;
+	min-height: 65vh;
 }
 
 .App-body__search-view {
-	margin: 3rem 0;
-	width: 100%;
-	padding: 0 3.5em;
+	width: 80em;
+	margin: 0 auto;
+}
+
+.App-body__search-view__wrapper {
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
+	flex-direction: row;
 	font-size: 1.8em;
+	margin: 3em 0;
+	background-color: #fff;
+	border-radius: 2px;
+	box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2), 0px 3px 4px rgba(0, 0, 0, 0.12), 0px 2px 4px rgba(0, 0, 0, 0.14);
+	padding: 2em;
 }
 
 .App-body__search-view__select-airport {
+	display: flex;
 	width: 25%;
+	margin-right: 1.4em;
 }
 
 .App-body__search-view__select-date {
+	display: flex;
 	width: 18%;
+	margin-right: 1.4em;
 }
 
 .App-body__search-view__select-passengers {
-	width: 12%;
+	display: flex;
+	width: 10%;
 }
 
+.App-body__flights-view {
+	width: 80em;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	margin: 0 auto;
+}
+
+.App-body__flights-view__button {
+	margin: 2em 0;
+}
+
+/*footer*/
 .App-footer {
-	height: auto;
+	height: 10vh;
+	color: #9E9E9E;
+	padding: 1em 0;
 }
 /*keyframes*/
 @keyframes App-logo-spin {

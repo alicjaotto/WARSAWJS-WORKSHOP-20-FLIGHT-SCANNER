@@ -47,7 +47,7 @@ export class FlightsView extends Component {
 			changes = 1 + ' ' + 'change';
 			return changes;
 		} else if (flights.length >= 3) {
-			changes = flights.length - 1 + 'changes';
+			changes = flights.length - 1 + ' ' + 'changes';
 			return changes;
 		} else {
 			return changes;
@@ -56,7 +56,7 @@ export class FlightsView extends Component {
 
 	render() {
 		const {flights, passengers} = this.state;
-		var flights_result = flights.map((flight, index) => {
+		var flights_result = flights.map((flight)=> {
 			const {id, price} = flight;
 			const durationBack = this._getDuration(flight.inboundPath);
 			const changesBack = this._getChanges(flight.inboundPath);
@@ -67,7 +67,6 @@ export class FlightsView extends Component {
 				<Flight key={id}
 					price={price}
 					id={id}
-					index={index+1}
 					durationThere={durationThere}
 					changesThere={changesThere}
 					durationBack={durationBack}
@@ -76,12 +75,14 @@ export class FlightsView extends Component {
 			)
 		})
 		return (
-			<div>
-				<span> number of passengers: {passengers}</span>
-				<ul>
-					{flights_result}
-				</ul>
-				<Button color="primary" onClick={this.onBackClick}>new search</Button>
+			<div className="App-body__flights-view">
+				{flights_result}
+				<div className="App-body__flights-view__button">
+					<Button color="primary"
+						onClick={this.onBackClick}>
+						new search
+					</Button>
+				</div>
 			</div>
 		)
 	}
