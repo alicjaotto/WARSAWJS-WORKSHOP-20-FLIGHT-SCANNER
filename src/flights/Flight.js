@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import Divider from '@material-ui/core/Divider';
+import Button from '@material-ui/core/Button';
 import '../assets/css/Flight.css';
 import cyan from '@material-ui/core/colors/cyan';
 
 export class Flight extends Component {
 	render() {
-		const {price, id, durationThere, durationBack, changesThere, changesBack} = this.props;
+		const {price, id, durationThere, durationBack, changesThere, changesBack, onClick} = this.props;
 		const dividerStyle = {
 			backgroundColor: cyan[50]
 		}
@@ -40,6 +41,15 @@ export class Flight extends Component {
 							<div className="Flight__wrapper__content__flights__flight__changes">{changesBack}</div>
 						</div>
 					</div>
+					<div className="Flight__wrapper__content__flights__button">
+						<Button variant="contained"
+							id="select-flight-{id}"
+							color="primary"
+							size="large"
+							onChange={onClick}>
+							select
+						</Button>
+					</div>
 				</div>
 			</div>
 		)
@@ -52,5 +62,6 @@ Flight.propTypes = {
 	durationThere: PropTypes.string,
 	durationBack: PropTypes.string,
 	changesThere: PropTypes.string,
-	changesBack: PropTypes.string
+	changesBack: PropTypes.string,
+	onClick: PropTypes.func.isRequired
 };

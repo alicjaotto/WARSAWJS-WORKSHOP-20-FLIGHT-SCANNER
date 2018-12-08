@@ -71,6 +71,9 @@ a {
 .App-body__search-view {
 	width: 80em;
 	margin: 0 auto;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
 }
 
 .App-body__search-view__wrapper {
@@ -101,6 +104,10 @@ a {
 .App-body__search-view__select-passengers {
 	display: flex;
 	width: 10%;
+}
+
+.App-body__search-view__button {
+	width: 20%;
 }
 
 .App-body__flights-view {
@@ -141,4 +148,27 @@ a {
 	0%{background-position:0% 50%}
 	50%{background-position:100% 50%}
 	100%{background-position:0% 50%}
+}
+
+/*media queries*/
+@media only screen and (max-width: 600px) {
+	.App-body__search-view {
+		width: 90vw;
+	}
+
+	.App-body__search-view__wrapper {
+		flex-direction: column;
+		margin: 1.5em 0;
+	}
+
+	.App-body__search-view__select-airport,
+	.App-body__search-view__select-date,
+	.App-body__search-view__select-passengers {
+		width: 100%;
+		margin: 1em 0;
+	}
+
+	.App-body__search-view__button {
+		width: 100%;
+	}
 }

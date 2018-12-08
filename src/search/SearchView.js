@@ -95,7 +95,7 @@ export class SearchView extends Component {
 
 				{(pending || flightsSearchPending) && <CircularProgress/> }
 
-				{!flightsSearchPending && <SearchButton text={`Search flights`} onClick={this.onSearchPress} disabled={SearchButtonActive}/>}
+				{!flightsSearchPending && <div className="App-body__search-view__button"><SearchButton text={`Search flights`} onClick={this.onSearchPress} disabled={SearchButtonActive}/></div>}
 			</div>
 		)
 	}

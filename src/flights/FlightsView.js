@@ -13,7 +13,8 @@ export class FlightsView extends Component {
 
 	state = {
 		flights: this.props.flights,
-		passengers: this.props.passengers
+		passengers: this.props.passengers,
+		selectedFlight: ''
 	}
 
 	_getDuration = (flights) => {
@@ -54,6 +55,13 @@ export class FlightsView extends Component {
 		}
 	}
 
+	selectFlight = () => {
+		this.setState({
+			selectedFlight: 'flight'
+		});
+		console.log(this.state.selectedFlight);
+	}
+
 	render() {
 		const {flights, passengers} = this.state;
 		var flights_result = flights.map((flight)=> {
@@ -70,7 +78,8 @@ export class FlightsView extends Component {
 					durationThere={durationThere}
 					changesThere={changesThere}
 					durationBack={durationBack}
-					changesBack={changesBack}>
+					changesBack={changesBack}
+					onClick={this.selectFlight}>
 				</Flight>
 			)
 		})

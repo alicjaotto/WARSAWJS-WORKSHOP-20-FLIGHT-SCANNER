@@ -31,7 +31,6 @@ class App extends Component {
 	}
 
 	onSearchClick(flights) {
-		console.log(flights);
 		this.setState({
 			searchViewVisible: false,
 			flights
