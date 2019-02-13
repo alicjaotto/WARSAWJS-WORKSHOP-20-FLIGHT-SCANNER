@@ -2,25 +2,31 @@
   "name": "warsawjs-workshop-20-flight-scanner",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://alicjaotto.github.io/warsawjs-workshop-20-flight-scanner/",
   "dependencies": {
     "@material-ui/core": "^3.6.1",
     "axios": "^0.18.0",
     "material-ui": "^0.20.1",
     "prop-types": "^15.6.1",
     "react": "^16.3.2",
-    "react-dom": "^16.3.2",
-    "react-scripts": "^2.1.1"
+    "react-dom": "^16.3.2"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "browserslist": [
     ">0.2%",
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "gh-pages": "^2.0.1",
+    "react-scripts": "^2.1.5"
+  }
 }
